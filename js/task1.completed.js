@@ -15,17 +15,28 @@ $(document).ready(function () {
 	});
 	$(document).on('dblclick','li', function(){
 		var liId = $(this).attr('id') ;
-		$('#' + liId).remove();
-        $(this).fadeOut('slow');    
+		var counter = 5;
+		var intervalId = null;
+		function remove () {
+			clearInterval(intervalId);
+			$('#' + liId).remove();
+		}
+		function checkTime () {
+			if(counter == 0) remove();
+			else {
+				counter--;
+			}
+		}
+		intervalId = setInterval(checkTime , 500); 
+        $('#' + $(this).attr('id')).fadeOut(1500);   
         checkMessage();
     });
     function checkMessage() {
     	if($('#productBox').contents().length == 0) {
-		$('#noProduct').html("There is No Product");
-	} else {
-		$('#noProduct').html("You can delete list by double click on it");
-	}
+			$('#noProduct').html("There is No Product");
+		} else {
+			$('#noProduct').html("You can delete list by double click on it");
+		}
     }
 });
-
 
