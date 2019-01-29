@@ -20,6 +20,7 @@ $(document).ready(function () {
 		function remove () {
 			clearInterval(intervalId);
 			$('#' + liId).remove();
+			checkMessage();
 		}
 		function checkTime () {
 			if(counter == 0) remove();
@@ -28,8 +29,7 @@ $(document).ready(function () {
 			}
 		}
 		intervalId = setInterval(checkTime , 500); 
-        $('#' + $(this).attr('id')).fadeOut(1500);   
-        checkMessage();
+        $('#' + $(this).attr('id')).fadeOut(1500);
     });
     function checkMessage() {
     	if($('#productBox').contents().length == 0) {
