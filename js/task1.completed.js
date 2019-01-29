@@ -11,22 +11,20 @@ $(document).ready(function () {
 		$('#productBox').append('<li class="list-group-item mb-3 bg-primary" id="' + item + '">' + item + '</li>');
 		$('#noProduct').empty();
 		$('input[name=txtItem]').val('');
-		console.log($('#productBox').contents().length);
 		checkMessage();
 	});
 	$(document).on('dblclick','li', function(){
 		var liId = $(this).attr('id') ;
-		// console.log(liId);
 		$('#' + liId).remove();
         $(this).fadeOut('slow');    
         checkMessage();
     });
     function checkMessage() {
     	if($('#productBox').contents().length == 0) {
-			$('#noProduct').html("There is No Product");
-		} else {
-			$('#noProduct').html("You can delete list by double click on it");
-		}
+		$('#noProduct').html("There is No Product");
+	} else {
+		$('#noProduct').html("You can delete list by double click on it");
+	}
     }
 });
 
